@@ -1,0 +1,19 @@
+.cart{
+    position: sticky;
+    top: 20px;
+}
+.btn-clear-cart, .review-btn, .btn-proceed{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    background: orangered;
+    color: #fff;
+}
+.review-btn, .btn-proceed{
+    background: white;
+    color: #000;
+}
