@@ -63,6 +63,11 @@ const Shop = () => {
         deleteShoppingCart();
     }
 
+    let reviewBtn;
+    if(cart.length !== 0){
+        reviewBtn = <Link to="/orders"> <button className='review-btn'>Review Order <FontAwesomeIcon icon={faArrowCircleRight}></FontAwesomeIcon></button> </Link>
+    }
+
     return (
         <div className='shop-container'>
             <div className="products-container">
@@ -79,9 +84,10 @@ const Shop = () => {
                     cart={cart}
                     handleClearCart = {handleClearCart}
                 >
-                    <Link to="/orders">
+                    {reviewBtn}
+                    {/* <Link to="/orders">
                         <button className='review-btn'>Review Order <FontAwesomeIcon icon={faArrowCircleRight}></FontAwesomeIcon></button>
-                    </Link>
+                    </Link> */}
                 </Cart>
             </div>
             

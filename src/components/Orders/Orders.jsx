@@ -21,25 +21,46 @@ const Orders = () => {
         deleteShoppingCart();
     }
 
-    return (
-        <div className='shop-container'>
-            <div className="review-container">
-                {
+    let products;
+    let checkoutBtn;
+    let message;
+    if(cart.length !== 0){
+        checkoutBtn = <Link to="/checkout"> <button className='btn-proceed'>Proceed Checkout <FontAwesomeIcon icon={faCreditCard}></FontAwesomeIcon></button> </Link>
+        products = <div>
+            {
                     cart.map(product => <ReviewItem
                         key={product.id}
                         products={product}
                         handleRemoveFromCart = {handleRemoveFromCart}
                     ></ReviewItem>)
                 }
+        </div>
+    }else if(cart.length === 0){
+        message = <h2>No Order Found!</h2>
+    }
+
+    return (
+        <div className='shop-container'>
+            <div className="review-container">
+                {message}
+                {products}
+                {/* {
+                    cart.map(product => <ReviewItem
+                        key={product.id}
+                        products={product}
+                        handleRemoveFromCart = {handleRemoveFromCart}
+                    ></ReviewItem>)
+                } */}
             </div>
             <div className="summary-container">
                 <Cart 
                     cart={cart}
                     handleClearCart = {handleClearCart}
                 >
-                    <Link to="/checkout">
+                    {/* <Link to="/checkout">
                         <button className='btn-proceed'>Proceed Checkout <FontAwesomeIcon icon={faCreditCard}></FontAwesomeIcon></button>
-                    </Link>
+                    </Link> */}
+                    {checkoutBtn}
                 </Cart>
             </div>
         </div>

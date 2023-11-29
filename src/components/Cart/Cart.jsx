@@ -26,6 +26,11 @@ const Cart = ({cart, handleClearCart, children}) => {
     const grandTotal = total + shippingTotal + tax;
     // const grandPriceTotal = Math.ceil(grandTotal);
 
+    let clearBtn;
+    if(cart.length !== 0){
+        clearBtn = <button onClick={handleClearCart} className="btn-clear-cart"> Clear Cart <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></button>
+    }
+
     return (
         <div className='cart'>
             <h2>This is Summary</h2><br/>
@@ -34,7 +39,8 @@ const Cart = ({cart, handleClearCart, children}) => {
             <p>Shipping Charge: ${shippingTotal}</p>
             <p>Total Tax: ${tax.toFixed(2)}</p>
             <h4>Grand Total: ${grandTotal.toFixed(2)}</h4>
-            <button onClick={handleClearCart} className="btn-clear-cart"> Clear Cart <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></button>
+            {clearBtn}
+            {/* <button onClick={handleClearCart} className="btn-clear-cart"> Clear Cart <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></button> */}
             {children}
         </div>
     );
